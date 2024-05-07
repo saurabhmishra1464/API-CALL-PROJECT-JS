@@ -30,6 +30,8 @@ function displayResponse(posts) {
 }
 
 // fetchUsingXHR();
+// fetchUsingFetchMethod();
+fetchUsingAsyncAwaitMethod();
 
 function fetchUsingFetchMethod() {
     debugger
@@ -39,4 +41,10 @@ function fetchUsingFetchMethod() {
     fetchRequest.then(response => response.json()).then(result => displayResponse(result)).catch(e => console.log(e));
 }
 
-fetchUsingFetchMethod();
+async function fetchUsingAsyncAwaitMethod(){
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos', {
+        method: 'GET',
+    })
+    const result = await response.json();
+    displayResponse(result);
+}
