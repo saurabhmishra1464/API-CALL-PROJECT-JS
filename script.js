@@ -17,6 +17,7 @@ function fetchUsingXHR() {
 }
 
 function displayResponse(posts) {
+    debugger
     postListContainer.innerHTML = posts.map(
         (postItem) =>
             `
@@ -28,4 +29,14 @@ function displayResponse(posts) {
     ).join(" ");
 }
 
-fetchUsingXHR();
+// fetchUsingXHR();
+
+function fetchUsingFetchMethod() {
+    debugger
+    const fetchRequest = fetch('https://jsonplaceholder.typicode.com/todos', {
+        method: 'GET',
+    })
+    fetchRequest.then(response => response.json()).then(result => displayResponse(result)).catch(e => console.log(e));
+}
+
+fetchUsingFetchMethod();
